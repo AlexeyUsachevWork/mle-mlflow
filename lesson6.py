@@ -3,13 +3,17 @@ import pandas as pd
 import mlflow
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 connection = {"sslmode": "require", "target_session_attrs": "read-write"}
 postgres_credentials = {
-    "host": "rc1b-uh7kdmcx67eomesf.mdb.yandexcloud.net",
-    "port": "6432",
-    "dbname": "playground_mle_20260408_8d08444c1d",
-    "user": "mle_20260408_8d08444c1d_freetrack",
-    "password": "679f2b36a6aa43b19856d7d50f0d451d",
+    "host": os.getenv("DB_DESTINATION_HOST"),
+    "port": os.getenv("DB_DESTINATION_PORT"),
+    "dbname": os.getenv("DB_DESTINATION_NAME"),
+    "user": os.getenv("DB_DESTINATION_USER"),
+    "password": os.getenv("DB_DESTINATION_PASSWORD"),
 }
 assert all([var_value != "" for var_value in list(postgres_credentials.values())])
 

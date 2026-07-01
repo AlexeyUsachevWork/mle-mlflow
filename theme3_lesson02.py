@@ -109,5 +109,3 @@ aggregated_df = pd.DataFrame(df.groupby(x).agg({y: 'mean'})).reset_index()
 sorted_df = aggregated_df.sort_values(y, ascending=False).reset_index(drop=True)
 print(sorted_df)
 print('-'*30)
-
-S
